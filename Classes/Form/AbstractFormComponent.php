@@ -353,6 +353,16 @@ abstract class AbstractFormComponent implements FormInterface {
 	}
 
 	/**
+	 * @return ContainerInterface
+	 */
+	public function getRootParent() {
+		if (NULL === $this->parent) {
+			return $this;
+		}
+		return $this->parent->getRootParent();
+	}
+
+	/**
 	 * @param array $variables
 	 * @return FormInterface
 	 */
